@@ -1,0 +1,42 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 650px;
+  margin: auto;
+  padding: 20px;
+}
+
+#add-item input, #add-item textarea {
+  width: 100%;
+  margin: 5px 0;
+  padding: 8px;
+}
+
+button {
+  padding: 8px 12px;
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 12px 0;
+  background: #f3f3f3;
+  padding: 12px;
+  border-radius: 6px;
+}
+
+.item .detail {
+  font-size: 0.9em;
+  color: #444;
+  margin-top: 4px;
+}
+
+.done {
+  color: green;
+  font-weight: bold;
+  margin-left: 10px;
+}
