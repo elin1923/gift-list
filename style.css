@@ -1,42 +1,238 @@
+/* ---------------------------------------------------------
+   GENERAL LAYOUT + TYPOGRAPHY
+--------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  max-width: 650px;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  max-width: 900px;
   margin: auto;
   padding: 20px;
+  background: #f5f7fa;
+  color: #222;
 }
 
-#add-item input, #add-item textarea {
-  width: 100%;
-  margin: 5px 0;
-  padding: 8px;
+h1 {
+  text-align: center;
+  margin: 20px 0 30px;
+  font-weight: 700;
+  font-size: 32px;
+  color: #1e1e1e;
 }
 
-button {
-  padding: 8px 12px;
-  margin-top: 8px;
-  cursor: pointer;
-}
 
-ul {
-  list-style: none;
+/* ---------------------------------------------------------
+   PINS – PINTEREST STYLE GRID FOR ITEM LIST
+--------------------------------------------------------- */
+#itemList {
+  column-count: 2;
+  column-gap: 20px;
   padding: 0;
 }
 
-li {
-  margin: 12px 0;
-  background: #f3f3f3;
-  padding: 12px;
-  border-radius: 6px;
+@media (max-width: 700px) {
+  #itemList {
+    column-count: 1;
+  }
 }
 
-.item .detail {
-  font-size: 0.9em;
-  color: #444;
-  margin-top: 4px;
+.itemCard {
+  background: white;
+  padding: 14px;
+  margin: 0 0 20px;
+  border-radius: 14px;
+  display: inline-block;
+  width: 100%;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.itemCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.14);
+}
+
+.itemCard img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+
+/* ---------------------------------------------------------
+   ITEM DETAIL TEXT
+--------------------------------------------------------- */
+.itemCard a {
+  color: #111;
+  font-size: 17px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.itemCard a:hover {
+  text-decoration: underline;
+}
+
+.detail {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #555;
 }
 
 .done {
-  color: green;
-  font-weight: bold;
-  margin-left: 10px;
+  color: #22a33f;
+  font-weight: 700;
+  margin-top: 8px;
+  font-size: 15px;
+}
+
+
+/* ---------------------------------------------------------
+   BUTTONS
+--------------------------------------------------------- */
+button {
+  background: #4f46e5;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.15s ease;
+  width: 100%;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: #4338ca;
+}
+
+.editBtn {
+  background: #facc15;
+  color: #333;
+}
+
+.editBtn:hover {
+  background: #e6b80f;
+}
+
+.deleteBtn {
+  background: #ef4444;
+}
+
+.deleteBtn:hover {
+  background: #dc2626;
+}
+
+.cancelBtn {
+  background: #e5e7eb;
+  color: #111;
+}
+
+.cancelBtn:hover {
+  background: #d5d6d8;
+}
+
+
+/* ---------------------------------------------------------
+   ADD ITEM FORM (ADMIN)
+--------------------------------------------------------- */
+#add-item {
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+  margin-bottom: 30px;
+}
+
+#add-item input,
+#add-item textarea {
+  width: 100%;
+  margin: 8px 0;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 15px;
+  background: #fafafa;
+}
+
+#add-item input:focus,
+#add-item textarea:focus {
+  outline: none;
+  border-color: #4f46e5;
+  background: white;
+}
+
+
+/* ---------------------------------------------------------
+   MODALS (EDIT + DELETE)
+--------------------------------------------------------- */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease;
+}
+
+.modal-content {
+  background: white;
+  padding: 24px;
+  width: 95%;
+  max-width: 420px;
+  border-radius: 16px;
+  box-shadow: 0 5px 22px rgba(0,0,0,0.2);
+  animation: slideDown 0.25s ease;
+}
+
+.modal-content input,
+.modal-content textarea {
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background: #fafafa;
+}
+
+#previewImage {
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 10px;
+  display: none;
+}
+
+
+/* ---------------------------------------------------------
+   MODAL BUTTON LAYOUT
+--------------------------------------------------------- */
+.modal-buttons {
+  display: flex;
+  margin-top: 18px;
+  gap: 12px;
+}
+
+.modal-buttons button {
+  flex: 1;
+}
+
+
+/* ---------------------------------------------------------
+   ANIMATIONS
+--------------------------------------------------------- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-12px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
